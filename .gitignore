@@ -1,0 +1,10 @@
+build/
+build-qnx/
+run/
+demo/
+screens/
+_scratch/
+*.o
+*.slg
+myqnx-*.png
+00-기획서-KR.md
