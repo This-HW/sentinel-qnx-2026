@@ -364,7 +364,10 @@ int main(int argc, char **argv)
             uint64_t prev_t = t0;
             for (size_t i = 0; i <= modes.n; i++) {
                 uint64_t at = (i < modes.n) ? modes.v[i].t_ns : t1;
-                int mode = (i < modes.n) ? modes.v[i].to : prev;
+                /* This segment runs from prev_t up to the transition at `at`,
+                 * so it is drawn in the mode already in effect (the mode from
+                 * the previous transition, NOMINAL before the first one). */
+                int mode = prev;
                 const char *col = mode == SL_MODE_SAFE_STOP ? "#f85149"
                                 : mode == SL_MODE_DEGRADED ? "#d29922"
                                 : mode == SL_MODE_WATCH ? "#58a6ff" : "#3fb950";
@@ -376,7 +379,9 @@ int main(int argc, char **argv)
                 fprintf(f, "<rect x=\"%.1f\" y=\"8\" width=\"%.1f\" height=\"22\" "
                            "fill=\"%s\"/>", x0, w, col);
                 prev_t = at;
-                prev = mode;
+                if (i < modes.n) {
+                    prev = modes.v[i].to;
+                }
             }
             fprintf(f, "<line x1=\"0\" y1=\"34\" x2=\"%d\" y2=\"34\" "
                        "stroke=\"#21262d\"/></svg>", W);

@@ -2,6 +2,8 @@ build/
 build-qnx/
 run/
 demo/
+demo/*.mp4
+demo/seg_*.avi
 screens/
 _scratch/
 *.o
