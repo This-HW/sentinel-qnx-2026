@@ -64,6 +64,14 @@ probability rises — so the deadline is protected before it is missed.
 | Evidence | every job (decimated), every miss, every mode transition and every operator action is written to a CRC-protected log; `sentinel-report` turns it into an HTML/JSON report **on the host, with no QNX installed** |
 | Detectability | lost events are counted through sequence gaps; overlapping or duplicate completions and unknown task ids are counted as policy violations instead of being silently absorbed |
 
+## Codelab: build the core yourself (~30 minutes)
+
+[`docs/CODELAB.md`](docs/CODELAB.md) is a self-contained tutorial that builds the
+mechanism Sentinel is made of — a kernel timer whose expiry arrives as a pulse,
+and a `/dev/deadline` resource manager that catches a missed deadline without
+any cooperation from the task — in two small programs, on the free QNX 8.0 VM,
+with no target hardware. Both programs are in [`codelab/`](codelab/).
+
 ## Quick start — host simulation (no QNX needed)
 
 The supervisor, the statistics, the log and every tool are portable C11. A

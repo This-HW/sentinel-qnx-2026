@@ -355,7 +355,10 @@ that make it usable on a real robot or medical device:
 * a simulated 1 kHz control loop, a load generator, and scripted faults, so the
   whole story is repeatable.
 
-<https://github.com/> (Sentinel repository link goes here)
+The full source, the design notes and the demo script are in the same
+repository: <https://github.com/This-HW/sentinel-qnx-2026>. The two programs
+from this codelab are also there as standalone files, `codelab/pulse-demo.c`
+and `codelab/deadline-rm.c`.
 
 Exercises, roughly in order of difficulty:
 
